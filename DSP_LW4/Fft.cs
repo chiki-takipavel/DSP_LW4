@@ -60,7 +60,7 @@ namespace DSP_LW4
             return result;
         }
 
-        public static Complex[] GetFftButterfly(Complex[] x, bool invert = false)
+        public static Complex[] GetFftIterative(Complex[] x, bool invert = false)
         {
             int n = x.Length;
             Complex[] result = new Complex[n];

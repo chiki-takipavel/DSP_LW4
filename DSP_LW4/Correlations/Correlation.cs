@@ -95,8 +95,8 @@ namespace DSP_LW4.Correlations
         public IEnumerable<double> GetFast(bool leftToCenter)
         {
             List<double> result = new();
-            Complex[] complexX1 = Fft.GetFftButterfly(complexA);
-            Complex[] complexX2 = Fft.GetFftButterfly(complexB);
+            Complex[] complexX1 = Fft.GetFftIterative(complexA);
+            Complex[] complexX2 = Fft.GetFftIterative(complexB);
             Complex[] complexResult = new Complex[complexX1.Length];
 
             for (int i = 0; i < complexX1.Length; i++)
@@ -105,7 +105,7 @@ namespace DSP_LW4.Correlations
                 complexResult[i] = complexX1[i] * complexX2[i];
             }
 
-            complexResult = Fft.GetFftButterfly(complexResult, true);
+            complexResult = Fft.GetFftIterative(complexResult, true);
 
             int resultLength = complexResult.Length / 2;
             if (leftToCenter)
